@@ -20,15 +20,23 @@ public class CglibInterceptor implements MethodInterceptor {
 
 
     @Override
-    public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
+    /**
+     * o 代理类对象
+     * method 当前被代理拦截的方法
+     * args 拦截方法的参数
+     * methodProxy 代理类对应目标类的代理方法
+     * 创建 CGLIB 动态代理类
+     */
+    //TODO：请详细理解methodProxy.invokeSuper(o, args)和method.invoke(obj, args)的区别！！！
+    public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
         Object ret = null;
         //事务增强
         if(method.getName().equals("sing")){
             transaction.before();
-            ret = method.invoke(obj, objects);
+            ret = methodProxy.invokeSuper(o, args);
             transaction.after();
         }else {
-            ret = method.invoke(obj, objects);
+            ret = methodProxy.invokeSuper(o, args);
         }
 
         return ret;

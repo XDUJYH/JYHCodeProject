@@ -1,4 +1,5 @@
 import com.jyh.proxy.cglibproxy.CglibInterceptor;
+import com.jyh.proxy.cglibproxy.StudentService;
 import com.jyh.proxy.jdkproxy.DaoTransaction;
 import com.jyh.proxy.jdkproxy.IStudentService;
 import com.jyh.proxy.jdkproxy.StudentServiceImpl;
@@ -39,15 +40,16 @@ public class TestProxy {
     @Test
     public void testCglibProxy(){
         //得到方法拦截器
-        IStudentService studentService = new StudentServiceImpl("qzb");
+        //其实不用传入studentService也行
+        StudentService studentService = new StudentService("qzb");
         CglibInterceptor interceptor = new CglibInterceptor(new DaoTransaction(), studentService);
         //使用CGLIB框架生成目标类的子类（代理类）实现增强
         Enhancer enhancer = new Enhancer();
         //设置父类字节码
-        enhancer.setSuperclass(StudentServiceImpl.class);
+        enhancer.setSuperclass(StudentService.class);
         //设置拦截处理
         enhancer.setCallback(interceptor);
-        IStudentService service = (IStudentService) enhancer.create();
+        StudentService service = (StudentService) enhancer.create();
         System.out.println(service.sing("小星星"));
         System.out.println(service.dance());
     }
