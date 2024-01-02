@@ -14,29 +14,13 @@ public class LeetCode106 {
         Solution s1 = new Solution();
         Integer[] nodeValArray = {1,2,3,4,null,5,6,null,null,7};
         TreeNode root = TreeCreator.Create(nodeValArray);
-        System.out.println(s1.findBottomLeftValue(root));
+        System.out.println(s1);
 
     }
 
     static class Solution {
-        public int findBottomLeftValue(TreeNode root) {
-            int ans = 0;
-            Queue<TreeNode> queue = new LinkedList<>();
-            queue.offer(root);
-            while (!queue.isEmpty()){
-                int size = queue.size();
-                for (int i = 0; i < size; i++) {
-                    TreeNode node = queue.poll();
-                    ans = node.val;
-                    if (node.right != null){
-                        queue.offer(node.right);
-                    }
-                    if (node.left != null){
-                        queue.offer(node.left);
-                    }
-                }
-            }
-            return ans;
+        public TreeNode buildTree(int[] inorder, int[] postorder) {
+return null;
         }
     }
 }
