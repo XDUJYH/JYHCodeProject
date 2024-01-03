@@ -1,6 +1,8 @@
 package com.jyh.tree;
 
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
 import java.util.Queue;
 
 public class LeetCode106 {
@@ -19,8 +21,34 @@ public class LeetCode106 {
     }
 
     static class Solution {
+        private Map<Integer, Integer> indexMap;
         public TreeNode buildTree(int[] inorder, int[] postorder) {
-return null;
+            int n = inorder.length;
+            indexMap = new HashMap<>();
+            for (int i = 0; i < n; i++) {
+                indexMap.put(inorder[i], i);
+            }
+
+            return myBuildTree(inorder, postorder, 0, n - 1, 0, n - 1);
         }
+
+        public TreeNode myBuildTree(int[] inorder, int[] postorder, int inorderLeft, int inorderRight, int postorderLeft, int postorderRight){
+            if (postorderLeft > postorderRight){
+                return null;
+            }
+            int rootVal = postorder[postorderRight];
+            TreeNode root = new TreeNode(rootVal);
+            int rootIndex = indexMap.get(rootVal);
+            int rightTreeNum = inorderRight - rootIndex;
+
+            root.right = myBuildTree(inorder, postorder, rootIndex + 1, inorderRight, postorderRight - rightTreeNum, postorderRight - 1);
+            root.left = myBuildTree(inorder, postorder, inorderLeft, rootIndex - 1, postorderLeft, postorderRight - rightTreeNum - 1);
+
+            return root;
+        }
+
+
+
+
     }
 }
