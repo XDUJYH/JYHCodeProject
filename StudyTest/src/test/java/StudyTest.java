@@ -1,6 +1,13 @@
 import org.junit.Test;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
 public class StudyTest {
+    /**
+     * 这个测试类是用来测试一些逻辑运算符的
+     */
     @Test
     public void test(){
         int a = -4;
@@ -24,6 +31,9 @@ public class StudyTest {
          *         01111111111111111111111111111110
          */
     }
+    /**
+     * 这个测试类是用来测试引用相关的
+     */
     @Test
     public void test2(){
         System.out.println(42.0 == 42.0);
@@ -38,5 +48,26 @@ public class StudyTest {
         //此处输出为false因为这里对比的事引用类型！！之前的都是true，因为他们都是基本类型，基本类型==比较的是值
         System.out.println(d == e);
 
+    }
+    /**
+     * 测试泛型相关
+     */
+    @Test
+    public void test3() throws Exception {
+        List<Integer> list1 = new ArrayList<>();
+        List<Integer> list2 = new ArrayList<>();
+        list1.add(12);
+        //会报错
+//        list.add("a");
+        Class<? extends List> clazz = list1.getClass();
+        //涉及一个知识点：【JAVA反射】getMethod与getDeclaredMethod区别
+        //对应解答：https://blog.csdn.net/loulanyue_/article/details/103568496
+        Method add = clazz.getDeclaredMethod("add", Object.class);
+        //运行期间通过反射添加，可以实现
+        add.invoke(list1, "a");
+        add.invoke(list2, "a");
+
+        System.out.println(list1);
+        System.out.println(list2);
     }
 }
