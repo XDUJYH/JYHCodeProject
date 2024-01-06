@@ -24,4 +24,19 @@ public class StudyTest {
          *         01111111111111111111111111111110
          */
     }
+    @Test
+    public void test2(){
+        System.out.println(42.0 == 42.0);
+        int a  = 42;
+        double b = 42.0;
+        double c = 42.0;
+        System.out.println(a == 42.0);
+        System.out.println( a == b);
+        System.out.println( b == c);
+        Double d = 42.0;
+        Double e = 42.0;
+        //此处输出为false因为这里对比的事引用类型！！之前的都是true，因为他们都是基本类型，基本类型==比较的是值
+        System.out.println(d == e);
+
+    }
 }
