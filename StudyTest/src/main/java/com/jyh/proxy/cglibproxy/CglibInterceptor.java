@@ -26,6 +26,7 @@ public class CglibInterceptor implements MethodInterceptor {
      * args 拦截方法的参数
      * methodProxy 代理类对应目标类的代理方法
      * 创建 CGLIB 动态代理类
+     * 可以看JavaGuide中的具体cglib介绍！！
      */
     //TODO：请详细理解methodProxy.invokeSuper(o, args)和method.invoke(obj, args)的区别！！！
     public Object intercept(Object o, Method method, Object[] args, MethodProxy methodProxy) throws Throwable {
