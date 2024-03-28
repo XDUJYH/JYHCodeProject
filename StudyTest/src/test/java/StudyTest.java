@@ -94,4 +94,10 @@ public class StudyTest {
         System.out.println(son1.getFatherAttribute());
         System.out.println(son2.getFatherAttribute());
     }
+    @Test
+    public void test7(){
+        String s = new String("jyh");
+//        Integer.toHexString();
+        System.out.println(s.getBytes());
+    }
 }
