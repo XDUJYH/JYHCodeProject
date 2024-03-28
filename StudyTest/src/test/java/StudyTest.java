@@ -1,5 +1,6 @@
 import org.junit.Test;
 
+import javax.sound.midi.Soundbank;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
@@ -69,5 +70,28 @@ public class StudyTest {
 
         System.out.println(list1);
         System.out.println(list2);
+    }
+
+    @Test
+    public void test4(){
+        ArrayList<Integer> list = new ArrayList<>();
+        list.add(1);
+    }
+    @Test
+    public void test5(){
+        Father father = new Son();
+        father.publicSay();
+        //调用不了，因为这是子类的独有方法，虽然父类也有，但是父类的访问受限
+//        father.privateSay();
+    }
+
+    @Test
+    public void test6(){
+        Son son1 = new Son();
+        Son son2 = new Son();
+        son1.addFatherAttribute(1);
+        son2.addFatherAttribute(2);
+        System.out.println(son1.getFatherAttribute());
+        System.out.println(son2.getFatherAttribute());
     }
 }
