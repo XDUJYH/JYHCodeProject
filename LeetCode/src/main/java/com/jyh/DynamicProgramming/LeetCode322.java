@@ -1,23 +1,18 @@
 package com.jyh.DynamicProgramming;
 
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.LinkedList;
-import java.util.List;
-
-public class LeetCode518 {
+public class LeetCode322 {
     /**
-     * 518. 零钱兑换 II
-     * leetcode url : https://leetcode.cn/problems/coin-change-ii/description/
-     * 代码随想录 url : https://github.com/XDUJYH/leetcode-master/blob/master/problems/0518.%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2II.md
+     * 322. 零钱兑换
+     * leetcode url : https://leetcode.cn/problems/coin-change/
+     * 代码随想录 url : https://github.com/youngyangyang04/leetcode-master/blob/master/problems/0322.%E9%9B%B6%E9%92%B1%E5%85%91%E6%8D%A2.md
      *
      */
     public static void main(String[] args) {
         Solution s1 = new Solution();
-        int[] candidates = {2,3,6,7};
-        int target = 7;
-        System.out.println(s1);
+        int[] coins = {1, 2, 5};
+        int amount = 11;
+        System.out.println(s1.change(amount, coins));
 
     }
 
