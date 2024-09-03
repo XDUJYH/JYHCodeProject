@@ -19,7 +19,7 @@ public class LeetCode121 {
 
     static class Solution {
         public int maxProfit(int[] prices) {
-
+            return 0;
         }
     }
 }
